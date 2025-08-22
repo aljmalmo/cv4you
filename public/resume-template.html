@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume Template</title>
+    <meta name="description" content="Groundbreaking, fully customizable professional resume template">
+    
+    <style>
+        /* Professional Resume Template CSS - All inline for GitHub Pages compatibility */
+        
+        /* CSS Variables for theming - easily customizable */
+        :root {
+            /* Light theme colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-accent: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent-color: #3b82f6;
+            --accent-light: #93c5fd;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            
+            /* Typography */
+            --font-primary: 'Segoe UI', Tahoma, Arial, 'Noto Naskh Arabic UI', 'Cairo', sans-serif;
+            --font-heading: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        /* Dark theme colors */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-accent: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #475569;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+        }
+        
+        /* RTL Support */
+        [dir="rtl"] {
+            font-family: 'Cairo', 'Noto Naskh Arabic UI', 'Segoe UI', Tahoma, Arial, sans-serif;
+        }
+        
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        
+        /* Enhanced Print styles for perfect PDF export */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body {
+                background: white !important;
+                font-size: 11pt !important;
+                line-height: 1.4 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .toolbar {
+                display: none !important;
+            }
+            
+            .resume-container {
+                max-width: none !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                display: flex !important;
+                min-height: 100vh !important;
+                page-break-inside: avoid;
+                background: white !important;
+            }
+            
+            .sidebar {
+                width: 35% !important;
+                background: linear-gradient(135deg, var(--accent-color), var(--accent-light)) !important;
+                color: white !important;
+                padding: 30px 25px !important;
+                page-break-inside: avoid;
+                position: relative !important;
+            }
+            
+            .sidebar::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                background: rgba(0, 0, 0, 0.1) !important;
+                pointer-events: none !important;
+            }
+            
+            .main-content {
+                width: 65% !important;
+                padding: 30px 25px !important;
+                page-break-inside: avoid;
+                background: white !important;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                margin-bottom: 20px !important;
+            }
+            
+            .main-section {
+                page-break-inside: avoid;
+                margin-bottom: 25px !important;
+            }
+            
+            .profile-photo {
+                width: 100px !important;
+                height: 100px !important;
+                border: 3px solid rgba(255, 255, 255, 0.3) !important;
+            }
+            
+            .profile-name {
+                font-size: 22pt !important;
+                font-weight: 700 !important;
+            }
+            
+            .profile-title {
+                font-size: 14pt !important;
+            }
+            
+            .section-title {
+                font-size: 14pt !important;
+                color: white !important;
+            }
+            
+            .main-section-title {
+                font-size: 18pt !important;
+                color: var(--accent-color) !important;
+            }
+            
+            .timeline-title {
+                font-size: 13pt !important;
+            }
+            
+            .contact-item {
+                font-size: 10pt !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .skill-name {
+                font-size: 10pt !important;
+            }
+            
+            .timeline-description {
+                font-size: 10pt !important;
+            }
+            
+            /* Force colors to print */
+            .sidebar, .sidebar * {
+                color: white !important;
+            }
+            
+            .skill-bar {
+                background: rgba(255, 255, 255, 0.3) !important;
+            }
+            
+            .skill-progress {
+                background: rgba(255, 255, 255, 0.8) !important;
+            }
+            
+            .timeline-item::before {
+                background: var(--accent-color) !important;
+            }
+            
+            .timeline-item {
+                border-left: 2px solid var(--accent-color) !important;
+            }
+            
+            [dir="rtl"] .timeline-item {
+                border-right: 2px solid var(--accent-color) !important;
+                border-left: none !important;
+            }
+        }
+        
+        /* Toolbar styles */
+        .toolbar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            max-width: 300px;
+        }
+        
+        .toolbar button {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .toolbar button:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-1px);
+        }
+        
+        .color-picker {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        /* Resume container */
+        .resume-container {
+            max-width: 210mm; /* A4 width */
+            margin: 40px auto;
+            background: var(--bg-primary);
+            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            min-height: 297mm; /* A4 height */
+        }
+        
+        /* Sidebar styles */
+        .sidebar {
+            width: 35%;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: white;
+            padding: 40px 30px;
+            position: relative;
+        }
+        
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            pointer-events: none;
+        }
+        
+        .sidebar > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Profile section */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-family: var(--font-heading);
+        }
+        
+        .profile-title {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        /* Contact information */
+        .contact-info {
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            opacity: 0.8;
+        }
+        
+        [dir="rtl"] .contact-icon {
+            margin-right: 0;
+            margin-left: 12px;
+        }
+        
+        /* Section styles */
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        [dir="rtl"] .section-title::after {
+            left: auto;
+            right: 0;
+        }
+        
+        /* Skills section */
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Main content */
+        .main-content {
+            width: 65%;
+            padding: 40px;
+            background: var(--bg-primary);
+        }
+        
+        .main-section {
+            margin-bottom: 40px;
+        }
+        
+        .main-section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: var(--font-heading);
+        }
+        
+        .main-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        [dir="rtl"] .main-section-title::after {
+            left: auto;
+            right: 0;
+        }
+        
+        /* Professional summary */
+        .summary-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        /* Experience and education items */
+        .timeline-item {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 25px;
+            border-left: 2px solid var(--accent-color);
+        }
+        
+        [dir="rtl"] .timeline-item {
+            padding-left: 0;
+            padding-right: 25px;
+            border-left: none;
+            border-right: 2px solid var(--accent-color);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+        
+        [dir="rtl"] .timeline-item::before {
+            left: auto;
+            right: -6px;
+        }
+        
+        .timeline-header {
+            margin-bottom: 8px;
+        }
+        
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .timeline-company {
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 4px;
+        }
+        
+        .timeline-date {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+        
+        .timeline-description ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+        
+        [dir="rtl"] .timeline-description ul {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+        
+        .timeline-description li {
+            margin-bottom: 4px;
+        }
+        
+        /* Projects grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .project-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Languages section */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .language-name {
+            font-weight: 600;
+        }
+        
+        .language-level {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .toolbar {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 20px;
+                max-width: none;
+            }
+            
+            .resume-container {
+                margin: 20px;
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .sidebar {
+                width: 100%;
+                padding: 30px 20px;
+            }
+            
+            .main-content {
+                width: 100%;
+                padding: 30px 20px;
+            }
+            
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .profile-name {
+                font-size: 24px;
+            }
+            
+            .main-section-title {
+                font-size: 20px;
+            }
+        }
+        
+        /* Editable content styles */
+        [contenteditable="true"] {
+            outline: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+        
+        [contenteditable="true"]:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+        
+        [contenteditable="true"]:focus {
+            background-color: rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Utility classes */
+        .hidden {
+            display: none !important;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-2 {
+            margin-bottom: 8px;
+        }
+        
+        .mb-3 {
+            margin-bottom: 12px;
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Interactive Toolbar -->
+    <div class="toolbar">
+        <button onclick="printResume()" title="Export as PDF">
+            📄 PDF
+        </button>
+        <button onclick="exportAsPNG()" title="Export as PNG">
+            🖼️ PNG
+        </button>
+        <button onclick="exportAsDOC()" title="Export as DOC">
+            📝 DOC
+        </button>
+        <button onclick="toggleDirection()" title="Toggle RTL/LTR">
+            🔄 RTL/LTR
+        </button>
+        <button onclick="toggleTheme()" title="Toggle Dark/Light Theme">
+            🌓 Theme
+        </button>
+        <input type="color" class="color-picker" value="#3b82f6" onchange="changeAccentColor(this.value)" title="Change Accent Color">
+    </div>
+
+    <!-- Resume Container -->
+    <div class="resume-container fade-in">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <img 
+                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjFmNWY5Ii8+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNjAiIHI9IjI1IiBmaWxsPSIjY2JkNWUxIi8+CjxwYXRoIGQ9Ik0zMCAxMjBjMC0yNSAyMC00NSA0NS00NXM0NSAyMCA0NSA0NXYzMEgzMHoiIGZpbGw9IiNjYmQ1ZTEiLz4KPHN2Zz4=" 
+                    alt="Profile Photo" 
+                    class="profile-photo"
+                    onclick="changeProfilePhoto()"
+                >
+                <h1 class="profile-name" contenteditable="true">JOHN SMITH</h1>
+                <h2 class="profile-title" contenteditable="true">Senior Software Engineer</h2>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="section">
+                <h3 class="section-title">Contact</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                        <span contenteditable="true">john.smith@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zM6 4a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span contenteditable="true">+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span contenteditable="true">New York, NY</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd"/>
+                        </svg>
+                        <span contenteditable="true">linkedin.com/in/johnsmith</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="section">
+                <h3 class="section-title">Skills</h3>
+                <div class="skill-item">
+                    <div class="skill-name" contenteditable="true">JavaScript</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name" contenteditable="true">React</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name" contenteditable="true">Node.js</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name" contenteditable="true">Python</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name" contenteditable="true">AWS</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Languages Section -->
+            <div class="section">
+                <h3 class="section-title">Languages</h3>
+                <div class="language-item">
+                    <span class="language-name" contenteditable="true">English</span>
+                    <span class="language-level" contenteditable="true">Native</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name" contenteditable="true">Spanish</span>
+                    <span class="language-level" contenteditable="true">Advanced</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name" contenteditable="true">Arabic</span>
+                    <span class="language-level" contenteditable="true">عربي - متوسط</span>
+                </div>
+            </div>
+
+            <!-- Interests Section -->
+            <div class="section">
+                <h3 class="section-title">Interests</h3>
+                <div style="color: rgba(255, 255, 255, 0.9); line-height: 1.8;">
+                    <div contenteditable="true">• Technology Innovation</div>
+                    <div contenteditable="true">• Open Source Projects</div>
+                    <div contenteditable="true">• Photography</div>
+                    <div contenteditable="true">• Travel & Cultural Exchange</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Professional Summary -->
+            <div class="main-section">
+                <h2 class="main-section-title">Professional Summary</h2>
+                <p class="summary-text" contenteditable="true">
+                    Experienced Senior Software Engineer with 8+ years of expertise in full-stack development, 
+                    cloud architecture, and team leadership. Proven track record of delivering scalable solutions 
+                    that drive business growth and improve user experience. Passionate about emerging technologies 
+                    and mentoring junior developers.
+                </p>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="main-section">
+                <h2 class="main-section-title">Work Experience</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title" contenteditable="true">Senior Software Engineer</h3>
+                        <div class="timeline-company" contenteditable="true">Tech Solutions Inc.</div>
+                        <div class="timeline-date" contenteditable="true">Jan 2021 - Present</div>
+                    </div>
+                    <div class="timeline-description" contenteditable="true">
+                        <p>Lead a team of 5 developers in building scalable web applications using React, Node.js, and AWS.</p>
+                        <ul>
+                            <li>Architected and implemented microservices reducing system response time by 40%</li>
+                            <li>Mentored junior developers and established coding standards</li>
+                            <li>Collaborated with product teams to define technical requirements</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title" contenteditable="true">Full Stack Developer</h3>
+                        <div class="timeline-company" contenteditable="true">Digital Innovations Ltd.</div>
+                        <div class="timeline-date" contenteditable="true">Mar 2018 - Dec 2020</div>
+                    </div>
+                    <div class="timeline-description" contenteditable="true">
+                        <p>Developed and maintained web applications for various clients in e-commerce and fintech sectors.</p>
+                        <ul>
+                            <li>Built responsive front-end interfaces using React and Vue.js</li>
+                            <li>Developed RESTful APIs and integrated third-party services</li>
+                            <li>Improved application performance by 25% through optimization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title" contenteditable="true">Junior Software Developer</h3>
+                        <div class="timeline-company" contenteditable="true">StartUp Ventures</div>
+                        <div class="timeline-date" contenteditable="true">Jun 2016 - Feb 2018</div>
+                    </div>
+                    <div class="timeline-description" contenteditable="true">
+                        <p>Contributed to the development of a mobile-first web platform serving over 10,000 users.</p>
+                        <ul>
+                            <li>Implemented new features using JavaScript, HTML5, and CSS3</li>
+                            <li>Participated in code reviews and agile development processes</li>
+                            <li>Collaborated with designers to create pixel-perfect interfaces</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects -->
+            <div class="main-section">
+                <h2 class="main-section-title">Key Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3 class="project-title" contenteditable="true">E-Commerce Platform</h3>
+                        <p class="project-description" contenteditable="true">
+                            Built a scalable e-commerce platform handling 50k+ daily transactions using React, Node.js, 
+                            and MongoDB. Integrated payment gateways and implemented real-time inventory management.
+                        </p>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="project-title" contenteditable="true">Task Management App</h3>
+                        <p class="project-description" contenteditable="true">
+                            Developed a collaborative task management application with real-time updates using Socket.io, 
+                            React, and Express.js. Features include team collaboration and progress tracking.
+                        </p>
+                    </div>
+                    <div class="project-card">
+                        <h3 class="project-title" contenteditable="true">Data Analytics Dashboard</h3>
+                        <p class="project-description" contenteditable="true">
+                            Created an interactive analytics dashboard using D3.js and Python Flask, 
+                            providing insights for business stakeholders with real-time data visualization.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="main-section">
+                <h2 class="main-section-title">Education</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title" contenteditable="true">Master of Science in Computer Science</h3>
+                        <div class="timeline-company" contenteditable="true">Stanford University</div>
+                        <div class="timeline-date" contenteditable="true">2014 - 2016</div>
+                    </div>
+                    <div class="timeline-description" contenteditable="true">
+                        <p>Specialized in Software Engineering and Machine Learning. GPA: 3.8/4.0</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title" contenteditable="true">Bachelor of Science in Computer Engineering</h3>
+                        <div class="timeline-company" contenteditable="true">UC Berkeley</div>
+                        <div class="timeline-date" contenteditable="true">2010 - 2014</div>
+                    </div>
+                    <div class="timeline-description" contenteditable="true">
+                        <p>Magna Cum Laude. Relevant coursework: Data Structures, Algorithms, Database Systems.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="main-section">
+                <h2 class="main-section-title">Certifications</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div style="padding: 15px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+                        <div class="font-bold" contenteditable="true">AWS Solutions Architect</div>
+                        <div style="color: var(--text-muted); font-size: 14px;" contenteditable="true">Amazon Web Services (2022)</div>
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+                        <div class="font-bold" contenteditable="true">Certified Scrum Master</div>
+                        <div style="color: var(--text-muted); font-size: 14px;" contenteditable="true">Scrum Alliance (2021)</div>
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+                        <div class="font-bold" contenteditable="true">Google Cloud Professional</div>
+                        <div style="color: var(--text-muted); font-size: 14px;" contenteditable="true">Google Cloud (2020)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Awards -->
+            <div class="main-section">
+                <h2 class="main-section-title">Awards & Recognition</h2>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title" contenteditable="true">Employee of the Year</h3>
+                        <div class="timeline-company" contenteditable="true">Tech Solutions Inc.</div>
+                        <div class="timeline-date" contenteditable="true">2022</div>
+                    </div>
+                    <div class="timeline-description" contenteditable="true">
+                        <p>Recognized for outstanding performance and leadership in delivering critical projects ahead of schedule.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* Professional Resume Template JavaScript - All functionality inline */
+        
+        // Theme management
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            
+            // Save preference
+            localStorage.setItem('resume-theme', newTheme);
+        }
+        
+        // Direction toggle (RTL/LTR)
+        function toggleDirection() {
+            const html = document.documentElement;
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+            html.setAttribute('dir', newDir);
+            
+            // Update language attribute for better accessibility
+            html.setAttribute('lang', newDir === 'rtl' ? 'ar' : 'en');
+            
+            // Save preference
+            localStorage.setItem('resume-direction', newDir);
+        }
+        
+        // Accent color customization
+        function changeAccentColor(color) {
+            document.documentElement.style.setProperty('--accent-color', color);
+            
+            // Calculate lighter version for gradient
+            const r = parseInt(color.slice(1, 3), 16);
+            const g = parseInt(color.slice(3, 5), 16);
+            const b = parseInt(color.slice(5, 7), 16);
+            const lightColor = `rgb(${Math.min(255, r + 50)}, ${Math.min(255, g + 50)}, ${Math.min(255, b + 50)})`;
+            document.documentElement.style.setProperty('--accent-light', lightColor);
+            
+            // Save preference
+            localStorage.setItem('resume-accent-color', color);
+        }
+        
+        // Profile photo change
+        function changeProfilePhoto() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.querySelector('.profile-photo').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }
+        
+        // Enhanced PDF Export with perfect formatting
+        function printResume() {
+            // Prepare the document for optimal PDF printing
+            const resumeContainer = document.querySelector('.resume-container');
+            const toolbar = document.querySelector('.toolbar');
+            
+            // Hide toolbar and optimize for print
+            toolbar.style.display = 'none';
+            
+            // Add print-specific styles
+            const printStyles = document.createElement('style');
+            printStyles.innerHTML = `
+                @media print {
+                    @page {
+                        size: A4;
+                        margin: 0;
+                    }
+                    body {
+                        margin: 0 !important;
+                        padding: 0 !important;
+                        background: white !important;
+                    }
+                }
+            `;
+            document.head.appendChild(printStyles);
+            
+            // Trigger print
+            window.print();
+            
+            // Clean up after print dialog
+            setTimeout(() => {
+                toolbar.style.display = 'flex';
+                document.head.removeChild(printStyles);
+            }, 1000);
+        }
+        
+        // Enhanced PNG Export using SVG and Canvas
+        function exportAsPNG() {
+            const resumeContainer = document.querySelector('.resume-container');
+            const toolbar = document.querySelector('.toolbar');
+            
+            // Hide toolbar temporarily
+            toolbar.style.display = 'none';
+            
+            // Create SVG representation
+            const svgData = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="794" height="1123">
+                    <foreignObject width="100%" height="100%">
+                        <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Segoe UI', Arial, sans-serif;">
+                            ${resumeContainer.outerHTML}
+                        </div>
+                    </foreignObject>
+                </svg>
+            `;
+            
+            // Create canvas and convert to PNG
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            canvas.width = 794; // A4 width in pixels at 96 DPI
+            canvas.height = 1123; // A4 height in pixels at 96 DPI
+            
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0);
+                
+                // Create download link
+                canvas.toBlob(function(blob) {
+                    const link = document.createElement('a');
+                    link.download = 'professional-resume.png';
+                    link.href = URL.createObjectURL(blob);
+                    link.click();
+                    
+                    // Clean up
+                    URL.revokeObjectURL(link.href);
+                    toolbar.style.display = 'flex';
+                });
+            };
+            
+            img.onerror = function() {
+                // Fallback method using html2canvas-like approach
+                exportPNGFallback();
+            };
+            
+            const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+            const url = URL.createObjectURL(svgBlob);
+            img.src = url;
+        }
+        
+        // Fallback PNG export method
+        function exportPNGFallback() {
+            const resumeContainer = document.querySelector('.resume-container');
+            const toolbar = document.querySelector('.toolbar');
+            
+            // Create a high-quality screenshot window
+            const printWindow = window.open('', '_blank', 'width=794,height=1123');
+            
+            // Get all computed styles
+            const styles = Array.from(document.styleSheets)
+                .map(styleSheet => {
+                    try {
+                        return Array.from(styleSheet.cssRules)
+                            .map(rule => rule.cssText)
+                            .join('\n');
+                    } catch (e) {
+                        return '';
+                    }
+                })
+                .join('\n');
+            
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>Resume PNG Export</title>
+                        <style>
+                            body { 
+                                margin: 0; 
+                                padding: 20px; 
+                                background: #f5f5f5;
+                                font-family: 'Segoe UI', Arial, sans-serif;
+                            }
+                            .export-instructions { 
+                                background: #e0f2fe; 
+                                border: 2px solid #0288d1; 
+                                border-radius: 12px; 
+                                padding: 20px; 
+                                margin-bottom: 20px;
+                                color: #01579b;
+                                text-align: center;
+                            }
+                            .export-instructions h3 {
+                                margin-top: 0;
+                                color: #0277bd;
+                            }
+                            .export-instructions ol {
+                                text-align: right;
+                                display: inline-block;
+                            }
+                            ${styles}
+                            .resume-container {
+                                background: white;
+                                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                                border-radius: 12px;
+                                overflow: hidden;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="export-instructions">
+                            <h3>📸 تصدير PNG - تعليمات الحفظ</h3>
+                            <ol>
+                                <li>اضغط بالزر الأيمن على السيرة الذاتية أدناه</li>
+                                <li>اختر "حفظ الصورة باسم" أو "Save Image As"</li>
+                                <li>أو استخدم أدوات لقطة الشاشة في متصفحك</li>
+                                <li>احفظ الملف باسم "resume.png"</li>
+                            </ol>
+                        </div>
+                        <div style="display: flex; justify-content: center;">
+                            ${resumeContainer.outerHTML}
+                        </div>
+                    </body>
+                </html>
+            `);
+            
+            toolbar.style.display = 'flex';
+            printWindow.focus();
+        }
+        
+        // Enhanced DOC Export with better Word compatibility
+        function exportAsDOC() {
+            const resumeContainer = document.querySelector('.resume-container');
+            
+            // Extract content with better formatting for Word
+            const sidebarContent = resumeContainer.querySelector('.sidebar');
+            const mainContent = resumeContainer.querySelector('.main-content');
+            
+            // Create Word-compatible HTML with inline styles
+            const htmlContent = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+                      xmlns:w='urn:schemas-microsoft-com:office:word'
+                      xmlns='http://www.w3.org/TR/REC-html40'>
+                <head>
+                    <meta charset='utf-8'>
+                    <title>Professional Resume</title>
+                    <!--[if gte mso 9]>
+                    <xml>
+                        <w:WordDocument>
+                            <w:View>Print</w:View>
+                            <w:Zoom>90</w:Zoom>
+                            <w:DoNotPromptForConvert/>
+                            <w:DoNotShowInsertionsAndDeletions/>
+                        </w:WordDocument>
+                    </xml>
+                    <![endif]-->
+                    <style>
+                        @page { 
+                            size: A4; 
+                            margin: 0.5in;
+                        }
+                        body { 
+                            font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+                            line-height: 1.6;
+                            color: #333;
+                            margin: 0;
+                            padding: 0;
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            border-spacing: 0;
+                        }
+                        .sidebar-cell {
+                            width: 35%;
+                            background: linear-gradient(135deg, #3b82f6, #93c5fd);
+                            color: white;
+                            padding: 30px 20px;
+                            vertical-align: top;
+                        }
+                        .main-cell {
+                            width: 65%;
+                            padding: 30px 25px;
+                            vertical-align: top;
+                            background: white;
+                        }
+                        .profile-photo {
+                            width: 120px;
+                            height: 120px;
+                            border-radius: 50%;
+                            border: 3px solid rgba(255,255,255,0.3);
+                            display: block;
+                            margin: 0 auto 20px auto;
+                        }
+                        .profile-name {
+                            font-size: 24pt;
+                            font-weight: bold;
+                            text-align: center;
+                            margin-bottom: 8px;
+                            color: white;
+                        }
+                        .profile-title {
+                            font-size: 16pt;
+                            text-align: center;
+                            margin-bottom: 20px;
+                            color: white;
+                            opacity: 0.9;
+                        }
+                        .section-title {
+                            font-size: 14pt;
+                            font-weight: bold;
+                            color: white;
+                            text-transform: uppercase;
+                            margin-bottom: 15px;
+                            border-bottom: 2px solid rgba(255,255,255,0.8);
+                            padding-bottom: 5px;
+                        }
+                        .main-section-title {
+                            font-size: 18pt;
+                            font-weight: bold;
+                            color: #3b82f6;
+                            margin-bottom: 20px;
+                            border-bottom: 3px solid #3b82f6;
+                            padding-bottom: 8px;
+                        }
+                        .contact-item {
+                            color: white;
+                            margin-bottom: 10px;
+                            font-size: 11pt;
+                        }
+                        .skill-item {
+                            margin-bottom: 12px;
+                            color: white;
+                        }
+                        .skill-name {
+                            font-weight: bold;
+                            font-size: 11pt;
+                        }
+                        .timeline-item {
+                            margin-bottom: 20px;
+                            padding-left: 20px;
+                            border-left: 2px solid #3b82f6;
+                        }
+                        .timeline-title {
+                            font-size: 14pt;
+                            font-weight: bold;
+                            color: #333;
+                            margin-bottom: 4px;
+                        }
+                        .timeline-company {
+                            font-size: 12pt;
+                            font-weight: bold;
+                            color: #3b82f6;
+                            margin-bottom: 4px;
+                        }
+                        .timeline-date {
+                            font-size: 10pt;
+                            color: #666;
+                            font-style: italic;
+                            margin-bottom: 8px;
+                        }
+                        .timeline-description {
+                            font-size: 11pt;
+                            color: #555;
+                            line-height: 1.6;
+                        }
+                        .summary-text {
+                            font-size: 12pt;
+                            line-height: 1.7;
+                            color: #555;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <table>
+                        <tr>
+                            <td class="sidebar-cell">
+                                ${sidebarContent.innerHTML.replace(/contenteditable="true"/g, '').replace(/class="([^"]*)"/, '')}
+                            </td>
+                            <td class="main-cell">
+                                ${mainContent.innerHTML.replace(/contenteditable="true"/g, '').replace(/class="([^"]*)"/, '')}
+                            </td>
+                        </tr>
+                    </table>
+                </body>
+                </html>
+            `;
+            
+            // Create and download the file
+            const blob = new Blob(['\ufeff', htmlContent], {
+                type: 'application/msword;charset=utf-8'
+            });
+            
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'professional-resume.doc';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Clean up
+            setTimeout(() => {
+                window.URL.revokeObjectURL(link.href);
+            }, 1000);
+        }
+        
+        // Initialize preferences on load
+        function initializePreferences() {
+            // Load theme preference
+            const savedTheme = localStorage.getItem('resume-theme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+            }
+            
+            // Load direction preference
+            const savedDirection = localStorage.getItem('resume-direction');
+            if (savedDirection) {
+                document.documentElement.setAttribute('dir', savedDirection);
+                document.documentElement.setAttribute('lang', savedDirection === 'rtl' ? 'ar' : 'en');
+            }
+            
+            // Load accent color preference
+            const savedColor = localStorage.getItem('resume-accent-color');
+            if (savedColor) {
+                changeAccentColor(savedColor);
+                document.querySelector('.color-picker').value = savedColor;
+            }
+        }
+        
+        // Smooth scroll for skill bars animation
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.style.width;
+                        entry.target.style.width = '0%';
+                        setTimeout(() => {
+                            entry.target.style.width = width;
+                        }, 300);
+                    }
+                });
+            });
+            
+            skillBars.forEach(bar => observer.observe(bar));
+        }
+        
+        // Add click-to-edit functionality
+        function initializeEditMode() {
+            // Add visual feedback for editable elements
+            const editableElements = document.querySelectorAll('[contenteditable="true"]');
+            editableElements.forEach(element => {
+                element.addEventListener('focus', function() {
+                    this.style.outline = '2px solid var(--accent-color)';
+                });
+                
+                element.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                });
+            });
+        }
+        
+        // Keyboard shortcuts
+        function initializeKeyboardShortcuts() {
+            document.addEventListener('keydown', function(e) {
+                // Ctrl+P for print
+                if (e.ctrlKey && e.key === 'p') {
+                    e.preventDefault();
+                    printResume();
+                }
+                
+                // Ctrl+D for theme toggle
+                if (e.ctrlKey && e.key === 'd') {
+                    e.preventDefault();
+                    toggleTheme();
+                }
+                
+                // Ctrl+R for RTL toggle
+                if (e.ctrlKey && e.key === 'r') {
+                    e.preventDefault();
+                    toggleDirection();
+                }
+            });
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePreferences();
+            animateSkillBars();
+            initializeEditMode();
+            initializeKeyboardShortcuts();
+            
+            // Add fade-in animation to resume container
+            setTimeout(() => {
+                document.querySelector('.resume-container').classList.add('fade-in');
+            }, 100);
+            
+            console.log('🎉 Professional Resume Template loaded successfully!');
+            console.log('📝 Click on any text to edit');
+            console.log('⚙️ Use the toolbar to customize and export');
+            console.log('⌨️ Keyboard shortcuts: Ctrl+P (Print), Ctrl+D (Theme), Ctrl+R (RTL)');
+        });
+    </script>
+</body>
+</html>
